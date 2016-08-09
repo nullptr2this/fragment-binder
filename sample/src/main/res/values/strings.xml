@@ -1,0 +1,27 @@
+<resources>
+
+    <string name="app_name">FragmentBinderSample</string>
+
+    <string name="yes_caps_leading">Yes</string>
+    <string name="no_caps_leading">No</string>
+
+    <string name="show_dialog_targeting_activity">Target Activity</string>
+    <string name="show_dialog_targeting_fragment">Target Fragment</string>
+
+    <string name="activity_dialog_title">Activities!!!</string>
+    <string name="activity_dialog_message">This dialog\'s callback will be handled by it\'s containing activity.</string>
+
+    <string name="fragment_dialog_title">Fragments!!!</string>
+    <string name="fragment_dialog_message">This dialog\'s callback will be handled by it\'s containing fragment.</string>
+
+    <string name="dialog_confirmation_handled_in_activity">Confirmation handled in activity!</string>
+    <string name="dialog_rejection_handled_in_activity">Rejection handled in activity!</string>
+    <string name="dialog_cancellation_handled_in_activity">Cancellation handled in activity!</string>
+    <string name="dialog_dismissal_handled_in_activity">Dismissal handled in activity!</string>
+
+    <string name="dialog_confirmation_handled_in_fragment">Confirmation handled in fragment!</string>
+    <string name="dialog_rejection_handled_in_fragment">Rejection handled in fragment!</string>
+    <string name="dialog_cancellation_handled_in_fragment">Cancellation handled in fragment!</string>
+    <string name="dialog_dismissal_handled_in_fragment">Dismissal handled in fragment!</string>
+
+</resources>
