@@ -2,7 +2,7 @@ package nullptr2this.android.app.binder;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import nullptr2this.android.app.binder.FragmentBinder.Binding;
 import nullptr2this.android.app.binder.FragmentBinder.BindingStrategy;

@@ -2,7 +2,7 @@ package nullptr2this.android.app.binder;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import androidx.fragment.app.ListFragment;
 
 import nullptr2this.android.app.binder.FragmentBinder.BindingStrategy;
 
