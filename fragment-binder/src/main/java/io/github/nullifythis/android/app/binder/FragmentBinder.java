@@ -1,4 +1,4 @@
-package nullptr2this.android.app.binder;
+package io.github.nullifythis.android.app.binder;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 
 public class FragmentBinder<I> {
 
-    public static final String EXTRA_BINDING_TARGET = "nullptr2this.android.app.binder.EXTRA_BINDING_TARGET";
-    public static final String EXTRA_BINDING_CUSTOM_CLASS = "nullptr2this.android.app.binder.app.EXTRA_BINDING_CUSTOM_CLASS";
+    public static final String EXTRA_BINDING_TARGET = "io.github.nullifythis.android.app.binder.EXTRA_BINDING_TARGET";
+    public static final String EXTRA_BINDING_CUSTOM_CLASS = "io.github.nullifythis.android.app.binder.EXTRA_BINDING_CUSTOM_CLASS";
 
     public static final int BINDING_NONE = 0;
     public static final int BINDING_ACTIVITY = 1;

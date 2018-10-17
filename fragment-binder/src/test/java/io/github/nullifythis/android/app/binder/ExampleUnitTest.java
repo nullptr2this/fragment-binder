@@ -1,4 +1,4 @@
-package nullptr2this.android.app.binder;
+package io.github.nullifythis.android.app.binder;
 
 import org.junit.Test;
 

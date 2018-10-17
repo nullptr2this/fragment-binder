@@ -1,19 +1,19 @@
-package nullptr2this.android.app.binder;
+package io.github.nullifythis.android.app.binder;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.fragment.app.ListFragment;
+import androidx.fragment.app.DialogFragment;
 
-import nullptr2this.android.app.binder.FragmentBinder.BindingStrategy;
+import io.github.nullifythis.android.app.binder.FragmentBinder.BindingStrategy;
 
-public abstract class BindingListFragment<T> extends ListFragment {
+public abstract class BindingDialogFragment<T> extends DialogFragment {
 
     public static final int BINDING_NONE = FragmentBinder.BINDING_NONE;
     public static final int BINDING_ACTIVITY = FragmentBinder.BINDING_ACTIVITY;
     public static final int BINDING_FRAGMENT_PARENT = FragmentBinder.BINDING_FRAGMENT_PARENT;
     public static final int BINDING_FRAGMENT_TARGET = FragmentBinder.BINDING_FRAGMENT_TARGET;
 
-    protected BindingListFragment(Class<T> bindingType) {
+    protected BindingDialogFragment(Class<T> bindingType) {
         binder = new FragmentBinder<>(this, binding, bindingType);
     }
 
@@ -41,6 +41,14 @@ public abstract class BindingListFragment<T> extends ListFragment {
         super.onDetach();
     }
 
+    protected boolean isBound() {
+        return null != target;
+    }
+
+    protected T getBinding() {
+        return target;
+    }
+
     protected static Bundle createArguments(int binding) {
         return populateArguments(new Bundle(), binding);
     }
@@ -53,21 +61,13 @@ public abstract class BindingListFragment<T> extends ListFragment {
         return FragmentBinder.populateArguments(arguments, binding);
     }
 
-    protected boolean isBound() {
-        return null != target;
-    }
-
-    protected T getBinding() {
-        return target;
-    }
-
-    private FragmentBinder<T> binder;
+    private final FragmentBinder<T> binder;
     private T target;
 
     private FragmentBinder.Binding<T> binding = new FragmentBinder.Binding<T>() {
         @Override
         public void bind(T target) {
-            BindingListFragment.this.target = target;
+            BindingDialogFragment.this.target = target;
         }
 
         @Override

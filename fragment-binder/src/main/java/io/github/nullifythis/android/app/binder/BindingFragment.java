@@ -1,11 +1,11 @@
-package nullptr2this.android.app.binder;
+package io.github.nullifythis.android.app.binder;
 
 import android.app.Activity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
-import nullptr2this.android.app.binder.FragmentBinder.Binding;
-import nullptr2this.android.app.binder.FragmentBinder.BindingStrategy;
+import io.github.nullifythis.android.app.binder.FragmentBinder.Binding;
+import io.github.nullifythis.android.app.binder.FragmentBinder.BindingStrategy;
 
 public abstract class BindingFragment<T> extends Fragment {
 
