@@ -9,11 +9,6 @@ import io.github.nullifythis.android.app.binder.FragmentBinder.BindingStrategy;
 
 public abstract class BindingFragment<T> extends Fragment {
 
-    public static final int BINDING_NONE = FragmentBinder.BINDING_NONE;
-    public static final int BINDING_ACTIVITY = FragmentBinder.BINDING_ACTIVITY;
-    public static final int BINDING_FRAGMENT_PARENT = FragmentBinder.BINDING_FRAGMENT_PARENT;
-    public static final int BINDING_FRAGMENT_TARGET = FragmentBinder.BINDING_FRAGMENT_TARGET;
-
     protected BindingFragment(Class<T> bindingType) {
         binder = new FragmentBinder<>(this, binding, bindingType);
     }
