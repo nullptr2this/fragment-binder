@@ -14,11 +14,11 @@ public class FragmentBinder<I> {
     public static final int BINDING_FRAGMENT_PARENT = 2;
     public static final int BINDING_FRAGMENT_TARGET = 3;
     public static final int BINDING_FRAGMENT_CUSTOM = 4;
+    public static final int BINDING_CLOSEST_PARENT = 5;
     public static final int BINDING_DEFAULT = BINDING_NONE;
 
     public interface Binding<T> {
         void bind(T target);
-
         void unbind();
     }
 
@@ -42,6 +42,10 @@ public class FragmentBinder<I> {
             this.bindingType = bindingType;
         }
 
+        protected boolean isBindingType(Object target) {
+            return bindingType.isInstance(target);
+        }
+
         protected final void bind(Object target) {
             try {
                 binding.bind(bindingType.cast(target));
@@ -56,8 +60,8 @@ public class FragmentBinder<I> {
         }
 
         protected final Fragment fragment;
+        protected final Class<T> bindingType;
         private final Binding<T> binding;
-        private final Class<T> bindingType;
     }
 
     public <F extends Fragment & Binding<I>> FragmentBinder(final F fragment, Class<I> bindingType) {
@@ -169,6 +173,34 @@ public class FragmentBinder<I> {
         }
     }
 
+    protected static class ClosestParentBindingStrategy<T> extends BindingStrategy<T> {
+
+        public ClosestParentBindingStrategy(Fragment fragment, Binding<T> binding, Class<T> bindingType) {
+            super(fragment, binding, bindingType);
+        }
+
+        @Override
+        public void onCreate() { tryToBindToFirstParent(); }
+
+        @Override
+        public void onDestroy() { unbind(); }
+
+        private void tryToBindToFirstParent() {
+
+            Fragment parentFragment = fragment.getParentFragment();
+
+            while(null != parentFragment && !isBindingType(parentFragment)) {
+                parentFragment = parentFragment.getParentFragment();
+            }
+
+            if(null != parentFragment) { bind(parentFragment); }
+            else if(isBindingType(fragment.getActivity())) { bind(fragment.getActivity()); }
+            else { throw new IllegalStateException(String.format("Instance of type %s was unable to locate a parent to bind as type %s."
+                        , fragment.getClass().getSimpleName(), bindingType.getSimpleName())); }
+
+        }
+    }
+
     private static <T> BindingStrategy<T> createBindingStrategy(Fragment fragment, Binding<T> binding, Class<T> bindingType) {
 
         Bundle arguments = fragment.getArguments();
@@ -183,6 +215,8 @@ public class FragmentBinder<I> {
                 return new TargetFragmentBindingStrategy<>(fragment, binding, bindingType);
             case BINDING_FRAGMENT_CUSTOM:
                 return createCustomBindingStrategy(fragment, binding, bindingType);
+            case BINDING_CLOSEST_PARENT:
+                return new ClosestParentBindingStrategy(fragment, binding, bindingType);
             case BINDING_NONE:
             default:
                 return new NoBindingStrategy<>(fragment, binding, bindingType);
