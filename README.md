@@ -1,6 +1,8 @@
 # fragment-binder
 [![Release](https://jitpack.io/v/nullifythis/fragment-binder.svg)](https://jitpack.io/#nullifythis/fragment-binder)
 
+NOTE: The API for this library is still under construction and is subject to breaking changes.
+
 A small suite of classes allowing clients of a fragment class to control how a fragment acquires it's callback/delegate.
 
 The Android Developers Guide for Fragments suggests ([here](https://developer.android.com/guide/components/fragments.html#CommunicatingWithActivity)) code like the following be used to wire up a fragment to communicate with it's containing Activity.
