@@ -15,7 +15,7 @@ public class FragmentBinder<I> {
     public static final int BINDING_FRAGMENT_TARGET = 3;
     public static final int BINDING_FRAGMENT_CUSTOM = 4;
     public static final int BINDING_CLOSEST_PARENT = 5;
-    public static final int BINDING_DEFAULT = BINDING_NONE;
+    public static final int BINDING_DEFAULT = BINDING_CLOSEST_PARENT;
 
     public interface Binding<T> {
         void bind(T target);
