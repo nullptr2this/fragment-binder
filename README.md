@@ -41,6 +41,6 @@ repositories {
 Add the library dependency:
 ```groovy
 dependencies {
-    implementation 'com.github.nullifythis:fragment-binder:0.1'
+    implementation 'com.github.nullifythis:fragment-binder:0.3'
 }
 ```
